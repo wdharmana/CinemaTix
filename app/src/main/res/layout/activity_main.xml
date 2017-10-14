@@ -70,13 +70,13 @@
                     android:layout_marginBottom="@dimen/default_margin"
                     android:layout_marginTop="@dimen/input_margin">
                     <RadioButton
-                        android:id="@+id/rd_true"
+                        android:id="@+id/rb_true"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Ya"
                         android:checked="true"/>
                     <RadioButton
-                        android:id="@+id/rd_false"
+                        android:id="@+id/rb_false"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Tidak"
