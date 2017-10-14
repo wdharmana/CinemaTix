@@ -73,8 +73,7 @@
                         android:id="@+id/rb_true"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Ya"
-                        android:checked="true"/>
+                        android:text="Ya" />
                     <RadioButton
                         android:id="@+id/rb_false"
                         android:layout_width="wrap_content"
