@@ -17,6 +17,7 @@
 
 
             <ImageView
+                android:contentDescription="@string/background_only"
                 android:layout_width="match_parent"
                 android:layout_height="180dp"
                 android:scaleType="centerCrop"
@@ -36,7 +37,7 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Pilih Kelas"/>
+                    android:text="@string/class_label"/>
 
                 <Spinner
                     android:id="@+id/sp_class"
@@ -48,7 +49,7 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Pilih Film"/>
+                    android:text="@string/film_label"/>
 
                 <Spinner
                     android:id="@+id/sp_movie"
@@ -60,7 +61,7 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Jumlah tiket"/>
+                    android:text="@string/ticket_label"/>
 
                 <EditText
                     android:id="@+id/edt_jumlah"
@@ -72,7 +73,7 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Include Popcorn &amp; Soda?"/>
+                    android:text="@string/additional_label"/>
 
                 <RadioGroup
                     android:id="@+id/rg_additional"
@@ -85,12 +86,12 @@
                         android:id="@+id/rb_true"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Ya" />
+                        android:text="@string/ya_label" />
                     <RadioButton
                         android:id="@+id/rb_false"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Tidak"
+                        android:text="@string/tidak_label"
                         android:checked="true"/>
                 </RadioGroup>
 
@@ -99,7 +100,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@color/colorAccent"
-                    android:text="PESAN TIKET"
+                    android:text="@string/booking_label"
                     android:textColor="@color/white"/>
 
             </LinearLayout>
