@@ -45,7 +45,7 @@ public class ResultActivity extends AppCompatActivity {
         int rate = getPriceBasedOnMovie(movieCinematix);
         tvRate.setText(String.valueOf(rate));
 
-        String additional = intent.getStringExtra("additionalCinematix");
+        final String additional = intent.getStringExtra("additionalCinematix");
         int priceAdditional = getPriceBasedOnAdditional(additional);
         tvAdditional.setText(String.valueOf(priceAdditional));
 
@@ -70,7 +70,15 @@ public class ResultActivity extends AppCompatActivity {
         btnShare.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(getBaseContext(), "Help to share to world!", Toast.LENGTH_LONG).show();
+                String sendText = "Memesan " + tvJumlah.getText().toString() + " tiket " +
+                                    tvMovie.getText().toString() + ". Kelas " + tvClass.getText().toString() +
+                                    ", include popcorn dan soda : " + additional + ".\n" +
+                                    "Total Harga : " + tvTotal.getText().toString();
+                Intent sendIntent = new Intent();
+                sendIntent.setAction(Intent.ACTION_SEND);
+                sendIntent.putExtra(Intent.EXTRA_TEXT, sendText);
+                sendIntent.setType("text/plain");
+                startActivity(Intent.createChooser(sendIntent, "Bagikan ke "));
             }
         });
     }
