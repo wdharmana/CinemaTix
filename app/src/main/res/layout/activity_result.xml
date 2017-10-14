@@ -61,24 +61,10 @@
 
             <TextView
                 android:id="@+id/tv_rate"
-                tools:text="24.000"
+                tools:text="80.000"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="14dp"/>
-
-            <TextView
-                android:text="Popcorn &amp; Soda?"
-                android:textSize="18sp"
-                android:textStyle="bold"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-
-            <TextView
-                android:id="@+id/tv_additional"
-                tools:text="Ya"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="18dp"/>
 
             <TextView
                 android:text="Jumlah tiket"
@@ -95,11 +81,50 @@
                 android:layout_marginBottom="18dp"/>
 
             <TextView
+                android:text="Popcorn &amp; Soda?"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:id="@+id/tv_additional"
+                tools:text="Ya"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="18dp"/>
+
+            <TextView
                 android:text="Subtotal"
                 android:textSize="22sp"
                 android:textStyle="bold"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:weightSum="1"
+                android:layout_marginBottom="8dp">
+
+                <TextView
+                    android:text="Total harga kelas: "
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.5"
+                    android:textStyle="bold"
+                    android:textSize="14sp"/>
+
+                <TextView
+                    android:id="@+id/tv_class_subtotal"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.5"
+                    android:textSize="14sp"
+                    tools:text="20.000"/>
+
+            </LinearLayout>
 
             <LinearLayout
                 android:orientation="horizontal"
@@ -121,14 +146,17 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="0.5"
-                    android:textSize="14sp" />
+                    android:textSize="14sp"
+                    tools:text="400.000"/>
 
             </LinearLayout>
 
             <LinearLayout
                 android:orientation="horizontal"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="match_parent"
+                android:weightSum="1"
+                android:layout_marginBottom="8dp">
 
                 <TextView
                     android:text="Total popcorn &amp; soda: "
@@ -143,9 +171,12 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="0.5"
-                    android:textSize="14sp"/>
+                    android:textSize="14sp"
+                    tools:text="20.000"/>
 
             </LinearLayout>
+
+
 
             <TextView
                 android:layout_marginTop="@dimen/default_margin"
@@ -158,7 +189,7 @@
                 android:layout_marginTop="@dimen/default_margin"
                 android:textAlignment="center"
                 android:id="@+id/tv_total"
-                android:text="240.000"
+                tools:text="400.000"
                 android:textSize="32sp"
                 android:textStyle="bold"
                 android:layout_width="match_parent"
