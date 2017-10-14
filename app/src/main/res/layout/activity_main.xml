@@ -60,19 +60,33 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Include Popcorn &amp; Minuman?"/>
+                    android:text="Include Popcorn &amp; Soda?"/>
 
-                <Spinner
-                    android:id="@+id/sp_additional"
+                <RadioGroup
+                    android:id="@+id/rg_additional"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:orientation="horizontal"
                     android:layout_marginBottom="@dimen/default_margin"
-                    android:layout_marginTop="@dimen/input_margin"/>
+                    android:layout_marginTop="@dimen/input_margin">
+                    <RadioButton
+                        android:id="@+id/rd_true"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Ya"
+                        android:checked="true"/>
+                    <RadioButton
+                        android:id="@+id/rd_false"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Tidak"
+                        android:checked="true"/>
+                </RadioGroup>
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Jumlah"/>
+                    android:text="Jumlah tiket"/>
 
                 <EditText
                     android:id="@+id/edt_jumlah"

@@ -23,20 +23,129 @@
                 android:layout_height="wrap_content"/>
 
             <TextView
-                android:id="@+id/tv_movie"
-                android:text="Judul Film: -"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:text="Kelas"/>
+
+            <TextView
+                android:id="@+id/tv_class"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                tools:text="Ekonomi"
+                android:textSize="16sp"
+                android:layout_marginBottom="14dp"/>
+
+            <TextView
+                android:text="Judul Film"
+                android:textStyle="bold"
+                android:textSize="18sp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:id="@+id/tv_movie"
+                tools:text="Interstellar"
+                android:textSize="16sp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="14dp"/>
+
+            <TextView
+                android:text="Harga Tiket (pcs)"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
             <TextView
                 android:id="@+id/tv_rate"
-                android:text="24.000 x 2"
+                tools:text="24.000"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="14dp"/>
+
+            <TextView
+                android:text="Popcorn &amp; Soda?"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
             <TextView
                 android:id="@+id/tv_additional"
-                android:text="Tambahan: -"
+                tools:text="Ya"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="18dp"/>
+
+            <TextView
+                android:text="Jumlah tiket"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:id="@+id/tv_jumlah"
+                tools:text="5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="18dp"/>
+
+            <TextView
+                android:text="Subtotal"
+                android:textSize="22sp"
+                android:textStyle="bold"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:weightSum="1"
+                android:layout_marginBottom="8dp">
+
+                <TextView
+                    android:text="Total harga tiket: "
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.5"
+                    android:textStyle="bold"
+                    android:textSize="14sp"/>
+
+                <TextView
+                    android:id="@+id/tv_ticket_subtotal"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.5"
+                    android:textSize="14sp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:text="Total popcorn &amp; soda: "
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.5"
+                    android:textStyle="bold"
+                    android:textSize="14sp"/>
+
+                <TextView
+                    android:id="@+id/tv_additional_subtotal"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.5"
+                    android:textSize="14sp"/>
+
+            </LinearLayout>
 
             <TextView
                 android:layout_marginTop="@dimen/default_margin"
@@ -56,11 +165,11 @@
                 android:layout_height="wrap_content"/>
 
             <Button
-                android:id="@+id/btn_book"
+                android:id="@+id/btn_share"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@color/colorAccent"
-                android:text="SHARE KE TEMAN"
+                android:text="BAGIKAN KE TEMAN"
                 android:textColor="@color/white"/>
 
         </LinearLayout>
