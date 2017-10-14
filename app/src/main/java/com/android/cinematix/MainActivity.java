@@ -7,6 +7,9 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.Spinner;
 
 import java.util.ArrayList;
@@ -14,7 +17,10 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
-    Button btnBook;
+    private Button btnBook;
+    private RadioGroup rgAdditional;
+    private RadioButton rbAdditional;
+    private EditText etJumlah;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,14 +28,18 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         setContentView(R.layout.activity_main);
 
         // Spinner Element
-        Spinner spClass = (Spinner) findViewById(R.id.sp_class);
-        Spinner spFilm = (Spinner) findViewById(R.id.sp_movie);
-        Spinner spAdditional = (Spinner) findViewById(R.id.sp_additional);
+        final Spinner spClass = (Spinner) findViewById(R.id.sp_class);
+        final Spinner spFilm = (Spinner) findViewById(R.id.sp_movie);
+
+        // Radio element
+        rgAdditional = (RadioGroup) findViewById(R.id.rg_additional);
+
+        // EditText Element
+        etJumlah = (EditText) findViewById(R.id.edt_jumlah);
 
         // Spinner click listener
         spClass.setOnItemSelectedListener(this);
         spFilm.setOnItemSelectedListener(this);
-        spAdditional.setOnItemSelectedListener(this);
 
         // Spinner Dropdown elements
         List<String> classCinematix = new ArrayList<String>();
@@ -37,7 +47,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         classCinematix.add("Regular");
         classCinematix.add("Eksekutif");
 
-        List<String> filmCinematix = new ArrayList<String>();
+        final List<String> filmCinematix = new ArrayList<String>();
         filmCinematix.add("Emoji");
         filmCinematix.add("Star Wars: The last Jedi");
         filmCinematix.add("Rumah Pengabdi Setan?");
@@ -49,32 +59,34 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         filmCinematix.add("IT!");
         filmCinematix.add("Guardians Of Galaxy. Volume 2");
 
-        List<String> additionalCinematix = new ArrayList<String>();
-        additionalCinematix.add("Ya");
-        additionalCinematix.add("Tidak");
-
 
         // Creating adapter for spinner
         ArrayAdapter<String> classCinematixAdapter = new ArrayAdapter<String>(this, R.layout.support_simple_spinner_dropdown_item, classCinematix);
         ArrayAdapter<String> filmCinematixAdapter = new ArrayAdapter<String>(this, R.layout.support_simple_spinner_dropdown_item, filmCinematix);
-        ArrayAdapter<String> additionalCinematixAdapter = new ArrayAdapter<String>(this, R.layout.support_simple_spinner_dropdown_item, additionalCinematix);
-
 
         // Drop down layout style - list view with radio button
         classCinematixAdapter.setDropDownViewResource(R.layout.support_simple_spinner_dropdown_item);
         filmCinematixAdapter.setDropDownViewResource(R.layout.support_simple_spinner_dropdown_item);
-        additionalCinematixAdapter.setDropDownViewResource(R.layout.support_simple_spinner_dropdown_item);
 
         // Attaching data adapter to spinner
         spClass.setAdapter(classCinematixAdapter);
         spFilm.setAdapter(filmCinematixAdapter);
-        spAdditional.setAdapter(additionalCinematixAdapter);
 
         btnBook = (Button) findViewById(R.id.btn_book);
         btnBook.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(MainActivity.this, ResultActivity.class);
+
+                intent.putExtra("classCinematix", spClass.getSelectedItem().toString());
+                intent.putExtra("filmCinematix", spFilm.getSelectedItem().toString());
+
+                int selectedId = rgAdditional.getCheckedRadioButtonId();
+                rbAdditional = (RadioButton) findViewById(selectedId);
+                intent.putExtra("additionalCinematix", rbAdditional.getText().toString());
+
+                intent.putExtra("jumlahCinematix", etJumlah.getText().toString());
+
                 startActivity(intent);
             }
         });
