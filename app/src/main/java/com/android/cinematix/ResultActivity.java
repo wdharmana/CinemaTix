@@ -7,6 +7,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import java.text.NumberFormat;
+import java.util.Locale;
+
 public class ResultActivity extends AppCompatActivity {
 
     private TextView tvClass, tvMovie, tvRate, tvAdditional, tvJumlah;
@@ -33,48 +36,48 @@ public class ResultActivity extends AppCompatActivity {
         // Declare intent here
         Intent intent = getIntent();
 
-        String classCinematix = intent.getStringExtra("classCinematix");
+        final String classCinematix = intent.getStringExtra("classCinematix");
         tvClass.setText(classCinematix);
 
-        String movieCinematix = intent.getStringExtra("filmCinematix");
+        final String movieCinematix = intent.getStringExtra("filmCinematix");
         tvMovie.setText(movieCinematix);
 
         int rate = 0;
-        tvRate.setText(String.valueOf(rate));
+        tvRate.setText(convertMoney(rate));
 
         final String additional = intent.getStringExtra("additionalCinematix");
         int priceAdditional = getPriceBasedOnAdditional(additional);
-        tvAdditional.setText(additional+ " : "+priceAdditional);
+        tvAdditional.setText(additional+ " : "+convertMoney(priceAdditional) );
 
-        String jumlah = intent.getStringExtra("jumlahCinematix");
+        final String jumlah = intent.getStringExtra("jumlahCinematix");
         tvJumlah.setText(jumlah);
 
         // Sub total
         int priceClass = getPriceBasedOnClass(classCinematix);
 
         int subTotalMovie = priceClass * Integer.valueOf(jumlah);
-        tvSubTotalTicket.setText(String.valueOf(subTotalMovie));
+        tvSubTotalTicket.setText(convertMoney(subTotalMovie));
 
         int subTotalAddtional = priceAdditional * Integer.valueOf(jumlah);
-        tvSubTotalAddtional.setText(String.valueOf(subTotalAddtional));
+        tvSubTotalAddtional.setText(convertMoney(subTotalAddtional));
 
         // Total
-        int total = subTotalMovie + subTotalAddtional;
-        tvTotal.setText(String.valueOf(total));
+        final int total = subTotalMovie + subTotalAddtional;
+        tvTotal.setText(convertMoney(total));
 
         btnShare = (Button) findViewById(R.id.btn_share);
         btnShare.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String sendText = "Memesan " + tvJumlah.getText().toString() + " tiket " +
-                        tvMovie.getText().toString() + ". Kelas " + tvClass.getText().toString() +
+                String sendText = "Memesan " + jumlah + " tiket " +
+                        movieCinematix + ". Kelas " + classCinematix +
                         ", include popcorn dan soda : " + additional + ".\n" +
-                        "Total Harga : " + tvTotal.getText().toString();
+                        "Total Harga : " + convertMoney(total);
                 Intent sendIntent = new Intent();
                 sendIntent.setAction(Intent.ACTION_SEND);
                 sendIntent.putExtra(Intent.EXTRA_TEXT, sendText);
                 sendIntent.setType("text/plain");
-                startActivity(Intent.createChooser(sendIntent, "Bagikan ke "));
+                startActivity(Intent.createChooser(sendIntent, "Bagikan"));
             }
         });
     }
@@ -110,6 +113,10 @@ public class ResultActivity extends AppCompatActivity {
                 break;
         }
         return price;
+    }
+
+    public String convertMoney(int money) {
+        return NumberFormat.getNumberInstance(Locale.GERMANY).format(money);
     }
 
 
