@@ -101,30 +101,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
 
-            <LinearLayout
-                android:orientation="horizontal"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:weightSum="1"
-                android:layout_marginBottom="8dp">
 
-                <TextView
-                    android:text="@string/total_class_label"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="0.5"
-                    android:textStyle="bold"
-                    android:textSize="14sp"/>
-
-                <TextView
-                    android:id="@+id/tv_class_subtotal"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="0.5"
-                    android:textSize="14sp"
-                    tools:text="20.000"/>
-
-            </LinearLayout>
 
             <LinearLayout
                 android:orientation="horizontal"

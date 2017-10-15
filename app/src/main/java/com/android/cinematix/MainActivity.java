@@ -21,6 +21,10 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     private RadioGroup rgAdditional;
     private RadioButton rbAdditional;
     private EditText etJumlah;
+    private Spinner spClass,spFilm;
+
+    private List<String> classCinematix;
+    private List<String> filmCinematix;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,8 +32,8 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         setContentView(R.layout.activity_main);
 
         // Spinner Element
-        final Spinner spClass = (Spinner) findViewById(R.id.sp_class);
-        final Spinner spFilm = (Spinner) findViewById(R.id.sp_movie);
+        spClass = (Spinner) findViewById(R.id.sp_class);
+        spFilm = (Spinner) findViewById(R.id.sp_movie);
 
         // Radio element
         rgAdditional = (RadioGroup) findViewById(R.id.rg_additional);
@@ -42,12 +46,12 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         spFilm.setOnItemSelectedListener(this);
 
         // Spinner Dropdown elements
-        List<String> classCinematix = new ArrayList<String>();
+        classCinematix = new ArrayList<String>();
         classCinematix.add("Ekonomi");
         classCinematix.add("Regular");
         classCinematix.add("Eksekutif");
 
-        final List<String> filmCinematix = new ArrayList<String>();
+        filmCinematix = new ArrayList<String>();
         filmCinematix.add("Emoji");
         filmCinematix.add("Star Wars: The last Jedi");
         filmCinematix.add("Rumah Pengabdi Setan?");
@@ -76,18 +80,33 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         btnBook.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this, ResultActivity.class);
 
-                intent.putExtra("classCinematix", spClass.getSelectedItem().toString());
-                intent.putExtra("filmCinematix", spFilm.getSelectedItem().toString());
+                boolean valid = true;
 
-                int selectedId = rgAdditional.getCheckedRadioButtonId();
-                rbAdditional = (RadioButton) findViewById(selectedId);
-                intent.putExtra("additionalCinematix", rbAdditional.getText().toString());
+                if (etJumlah.getText().length() < 1) {
+                    etJumlah.setError("Wajib diisi!");
+                    valid = false;
+                } else if (Integer.parseInt(etJumlah.getText().toString()) < 1) {
+                    etJumlah.setError("Minimal 1 tiket");
+                    valid = false;
+                }
 
-                intent.putExtra("jumlahCinematix", etJumlah.getText().toString());
+                if (valid) {
 
-                startActivity(intent);
+                    Intent intent = new Intent(MainActivity.this, ResultActivity.class);
+
+                    intent.putExtra("classCinematix", spClass.getSelectedItem().toString());
+                    intent.putExtra("filmCinematix", spFilm.getSelectedItem().toString());
+
+                    int selectedId = rgAdditional.getCheckedRadioButtonId();
+                    rbAdditional = (RadioButton) findViewById(selectedId);
+                    intent.putExtra("additionalCinematix", rbAdditional.getText().toString());
+
+                    intent.putExtra("jumlahCinematix", etJumlah.getText().toString());
+
+                    startActivity(intent);
+
+                }
             }
         });
 
