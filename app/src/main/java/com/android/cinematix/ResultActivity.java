@@ -42,7 +42,7 @@ public class ResultActivity extends AppCompatActivity {
         final String movieCinematix = intent.getStringExtra("filmCinematix");
         tvMovie.setText(movieCinematix);
 
-        int rate = 0;
+        int rate = getPriceBasedOnClass(classCinematix);
         tvRate.setText(convertMoney(rate));
 
         final String additional = intent.getStringExtra("additionalCinematix");
