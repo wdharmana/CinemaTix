@@ -44,7 +44,7 @@ public class ResultActivity extends AppCompatActivity {
 
         final String additional = intent.getStringExtra("additionalCinematix");
         int priceAdditional = getPriceBasedOnAdditional(additional);
-        tvAdditional.setText(String.valueOf(priceAdditional));
+        tvAdditional.setText(additional+ " : "+priceAdditional);
 
         String jumlah = intent.getStringExtra("jumlahCinematix");
         tvJumlah.setText(jumlah);
@@ -112,9 +112,5 @@ public class ResultActivity extends AppCompatActivity {
         return price;
     }
 
-
-    public int getSubTotalAdditional(int additionalPrice, int pcs) {
-        return additionalPrice * pcs;
-    }
 
 }
