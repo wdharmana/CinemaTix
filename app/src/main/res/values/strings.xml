@@ -1,0 +1,20 @@
+<resources>
+    <string name="app_name">CinemaTix</string>
+    <string name="class_label">Kelas</string>
+    <string name="film_label">Film</string>
+    <string name="ticket_label">Jumlah tiket</string>
+    <string name="additional_label">Include Popcorn &amp; Soda?</string>
+    <string name="ya_label">Ya</string>
+    <string name="tidak_label">Tidak</string>
+    <string name="booking_label">PESAN TIKET</string>
+    <string name="background_only">Background only</string>
+
+    <string name="ticket_price_label">Harga Tiket (pcs)</string>
+    <string name="sentence_detail_label">Berikut detail pesanan anda:</string>
+    <string name="subtotal_label">Subtotal</string>
+    <string name="total_additional_label">Total popcorn &amp; soda: </string>
+    <string name="total_ticket_label">Total harga tiket: </string>
+    <string name="total_class_label">Total harga kelas: </string>
+    <string name="invoice_sentence_label">Tiket anda berhasil dipesan. Nominal transaksi dari pesanan anda adalah sejumlah:</string>
+    <string name="share_label">BAGIKAN KE TEMAN</string>
+</resources>
