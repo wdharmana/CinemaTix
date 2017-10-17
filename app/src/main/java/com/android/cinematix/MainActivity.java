@@ -15,7 +15,7 @@ import android.widget.Spinner;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
+public class MainActivity extends AppCompatActivity {
 
     private Button btnBook;
     private RadioGroup rgAdditional;
@@ -41,10 +41,6 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         // EditText Element
         etJumlah = (EditText) findViewById(R.id.edt_jumlah);
 
-        // Spinner click listener
-        spClass.setOnItemSelectedListener(this);
-        spFilm.setOnItemSelectedListener(this);
-
         // Spinner Dropdown elements
         classCinematix = new ArrayList<String>();
         classCinematix.add("Ekonomi");
@@ -68,9 +64,6 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         ArrayAdapter<String> classCinematixAdapter = new ArrayAdapter<String>(this, R.layout.support_simple_spinner_dropdown_item, classCinematix);
         ArrayAdapter<String> filmCinematixAdapter = new ArrayAdapter<String>(this, R.layout.support_simple_spinner_dropdown_item, filmCinematix);
 
-        // Drop down layout style - list view with radio button
-        classCinematixAdapter.setDropDownViewResource(R.layout.support_simple_spinner_dropdown_item);
-        filmCinematixAdapter.setDropDownViewResource(R.layout.support_simple_spinner_dropdown_item);
 
         // Attaching data adapter to spinner
         spClass.setAdapter(classCinematixAdapter);
@@ -109,15 +102,6 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
                 }
             }
         });
-
-    }
-
-    @Override
-    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-    }
-
-    @Override
-    public void onNothingSelected(AdapterView<?> parent) {
 
     }
 }
