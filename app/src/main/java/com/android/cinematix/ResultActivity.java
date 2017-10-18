@@ -33,53 +33,21 @@ public class ResultActivity extends AppCompatActivity {
 
         btnShare = (Button) findViewById(R.id.btn_share);
 
-        // Declare intent here
-        Intent intent = getIntent();
+        //TODO (10) Inisialiasi Intent yang dikirim dari UI / Activity sebelumnya menggunakan getIntent()
 
-        final String classCinematix = intent.getStringExtra("classCinematix");
-        tvClass.setText(classCinematix);
+        //TODO (11) ambil value dari Intent tersebut, dan aplikasikan ke dalam UI
 
-        final String movieCinematix = intent.getStringExtra("filmCinematix");
-        tvMovie.setText(movieCinematix);
+        //TODO (12) dapatkan harga kelas dan harga additional snack menggunakan fungsi getPriceBasedOnClass() dan getPriceBasedOnAdditional()
 
-        int rate = getPriceBasedOnClass(classCinematix);
-        tvRate.setText(convertMoney(rate));
+        //TODO (13) hitung total harga tiket, harga additional(popcorn & soda), dan total keseluruhan, formating bisa menggunakan method convertMoney()
 
-        final String additional = intent.getStringExtra("additionalCinematix");
-        int priceAdditional = getPriceBasedOnAdditional(additional);
-        tvAdditional.setText(additional+ " : "+convertMoney(priceAdditional) );
+        //TODO (14) tampilkan hasil perhitungan harga ke UI
 
-        final String jumlah = intent.getStringExtra("jumlahCinematix");
-        tvJumlah.setText(jumlah);
+        //TODO (15) buat action saat tombol "BAGIKAN KE TEMAN" di klik
 
-        // Sub total
-        int priceClass = getPriceBasedOnClass(classCinematix);
+        //TODO (16) pada action tombol, buat sebuah String yang menjelaskan detail tiket yang dipesan
 
-        int subTotalMovie = priceClass * Integer.valueOf(jumlah);
-        tvSubTotalTicket.setText(convertMoney(subTotalMovie));
-
-        int subTotalAddtional = priceAdditional * Integer.valueOf(jumlah);
-        tvSubTotalAddtional.setText(convertMoney(subTotalAddtional));
-
-        // Total
-        final int total = subTotalMovie + subTotalAddtional;
-        tvTotal.setText(convertMoney(total));
-
-        btnShare = (Button) findViewById(R.id.btn_share);
-        btnShare.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String sendText = "Memesan " + jumlah + " tiket " +
-                        movieCinematix + ". Kelas " + classCinematix +
-                        ", include popcorn dan soda : " + additional + ".\n" +
-                        "Total Harga : " + convertMoney(total);
-                Intent sendIntent = new Intent();
-                sendIntent.setAction(Intent.ACTION_SEND);
-                sendIntent.putExtra(Intent.EXTRA_TEXT, sendText);
-                sendIntent.setType("text/plain");
-                startActivity(Intent.createChooser(sendIntent, "Bagikan"));
-            }
-        });
+        //TODO (17) gunakan Intent dengan ACTION_SEND untuk melakukan share String yang sudah dibuat
     }
 
     public int getPriceBasedOnClass(String classCinema) {

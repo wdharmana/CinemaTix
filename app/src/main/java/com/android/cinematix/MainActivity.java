@@ -1,27 +1,14 @@
 package com.android.cinematix;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.RadioButton;
-import android.widget.RadioGroup;
-import android.widget.Spinner;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
-    private Button btnBook;
-    private RadioGroup rgAdditional;
-    private RadioButton rbAdditional;
-    private EditText etJumlah;
-    private Spinner spClass,spFilm;
+    //TODO (2) buat variabel komponen UI
 
     private List<String> classCinematix;
     private List<String> filmCinematix;
@@ -31,22 +18,15 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        // Spinner Element
-        spClass = (Spinner) findViewById(R.id.sp_class);
-        spFilm = (Spinner) findViewById(R.id.sp_movie);
+        //TODO (3) inisialisasikan value dari tiap variabel widget UI menggunakan findViewById
 
-        // Radio element
-        rgAdditional = (RadioGroup) findViewById(R.id.rg_additional);
-
-        // EditText Element
-        etJumlah = (EditText) findViewById(R.id.edt_jumlah);
-
-        // Spinner Dropdown elements
+        // List data untuk daftar kelas
         classCinematix = new ArrayList<String>();
         classCinematix.add("Ekonomi");
         classCinematix.add("Regular");
         classCinematix.add("Eksekutif");
 
+        //List data untuk daftar film
         filmCinematix = new ArrayList<String>();
         filmCinematix.add("Emoji");
         filmCinematix.add("Star Wars: The last Jedi");
@@ -60,48 +40,14 @@ public class MainActivity extends AppCompatActivity {
         filmCinematix.add("Guardians Of Galaxy. Volume 2");
 
 
-        // Creating adapter for spinner
-        ArrayAdapter<String> classCinematixAdapter = new ArrayAdapter<String>(this, R.layout.support_simple_spinner_dropdown_item, classCinematix);
-        ArrayAdapter<String> filmCinematixAdapter = new ArrayAdapter<String>(this, R.layout.support_simple_spinner_dropdown_item, filmCinematix);
+        //TODO (4) buat adapter untuk masing-masing spinner menggunakan ArrayAdapter
 
+        //TODO (5) setup masing-masing spinner dengan adapter yang sudah dibuat
 
-        // Attaching data adapter to spinner
-        spClass.setAdapter(classCinematixAdapter);
-        spFilm.setAdapter(filmCinematixAdapter);
-
-        btnBook = (Button) findViewById(R.id.btn_book);
-        btnBook.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                boolean valid = true;
-
-                if (etJumlah.getText().length() < 1) {
-                    etJumlah.setError("Wajib diisi!");
-                    valid = false;
-                } else if (Integer.parseInt(etJumlah.getText().toString()) < 1) {
-                    etJumlah.setError("Minimal 1 tiket");
-                    valid = false;
-                }
-
-                if (valid) {
-
-                    Intent intent = new Intent(MainActivity.this, ResultActivity.class);
-
-                    intent.putExtra("classCinematix", spClass.getSelectedItem().toString());
-                    intent.putExtra("filmCinematix", spFilm.getSelectedItem().toString());
-
-                    int selectedId = rgAdditional.getCheckedRadioButtonId();
-                    rbAdditional = (RadioButton) findViewById(selectedId);
-                    intent.putExtra("additionalCinematix", rbAdditional.getText().toString());
-
-                    intent.putExtra("jumlahCinematix", etJumlah.getText().toString());
-
-                    startActivity(intent);
-
-                }
-            }
-        });
+        //TODO (6) buat action saat tombol pesan di klik
+        //TODO (7) kirim semua data inputan ke UI / Activity berikutnya menggunakan Intent
+        //TODO (8) lakukan validasi inputan, dimana jumlah tiket harus diisi minimal 1 tiket
+        //TODO (9) navigasi ke UI / Activity berikutnya menggunakan method startActivity()
 
     }
 }
