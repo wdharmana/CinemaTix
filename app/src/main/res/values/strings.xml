@@ -17,4 +17,6 @@
     <string name="total_class_label">Total harga kelas: </string>
     <string name="invoice_sentence_label">Tiket anda berhasil dipesan. Nominal transaksi dari pesanan anda adalah sejumlah:</string>
     <string name="share_label">BAGIKAN KE TEMAN</string>
+
+    <string name="default_value">1</string>
 </resources>
