@@ -50,7 +50,8 @@
                     android:text="@string/film_label"/>
 
                 <!--TODO (1) BUAT Spinner MOVIE DENGAN ketentuan
-                    android:id="+id/sp_movie"-->
+                    android:id="@+id/sp_movie"-->
+
 
                 <TextView
                     android:layout_width="match_parent"
@@ -58,8 +59,9 @@
                     android:text="@string/ticket_label"/>
 
                 <!--TODO (2) BUAT EditText JUMLAH TIKET DENGAN ketentuan
-                    android:id="+id/edt_jumlah"
+                    android:id="@+id/edt_jumlah"
                     android:inputType="numberSigned"-->
+
 
                 <TextView
                     android:layout_width="match_parent"
@@ -85,6 +87,7 @@
                         android:id = "@+id/rb_false"
                         android:checked="true"
                         android:string="@string/tidak_label"-->
+
                 </RadioGroup>
 
                 <Button
