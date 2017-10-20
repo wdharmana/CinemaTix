@@ -34,13 +34,14 @@ public class ResultActivity extends AppCompatActivity {
         btnShare = (Button) findViewById(R.id.btn_share);
 
         // Declare Intent here
-        Intent intent = getIntent();
+        final Intent intent = getIntent();
 
         final String classCinematix = intent.getStringExtra("classCinematix");
         tvClass.setText(classCinematix);
 
-        // TODO (16) Buat variable untuk menampung INTENT dari filmCinematix dan masukkan variable tsb
-        // ke dalam tvMovie sesuai dengan format classCinematix dan tvClass di atas
+        // TODO (16) Buat variable untuk menampung INTENT dari filmCinematix dengan nama movieCinematix.
+        // Masukkan movieCinematix ke dalam tvMovie sesuai dengan format classCinematix dan tvClass di atas
+
 
         // TODO (17) Masukkan method getPriceBasedOnClass() dengan parameter classCinematix ke dalam variabel rate
         int rate = ;
@@ -51,7 +52,7 @@ public class ResultActivity extends AppCompatActivity {
         int priceAdditional = getPriceBasedOnAdditional(additional);
         // TODO (18) panggil method convertMoney() dengan parameter priceAdditional dan masukkan
         // setelah tanda " : "
-        tvAdditional.setText(additional+ " : " );
+        tvAdditional.setText(additional+ " : ");
 
         final String jumlah = intent.getStringExtra("jumlahCinematix");
         tvJumlah.setText(jumlah);
@@ -83,10 +84,10 @@ public class ResultActivity extends AppCompatActivity {
                         "Total Harga : " + convertMoney(total);
 
                 // TODO (20.A) Deklarasikan Intent object dengan nama sendIntent
-                Intent sendIntent = new Intent();
 
-                // TODO (20.B) berikan aksi Intent.ACTION_SEND thdp sendIntent
-                sendIntent.setAction(Intent.ACTION_SEND);
+
+                // TODO (20.B) berikan aksi intent.ACTION_SEND thdp sendIntent
+
 
                 sendIntent.putExtra(Intent.EXTRA_TEXT, sendText);
 
