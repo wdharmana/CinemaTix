@@ -12,8 +12,8 @@ import java.util.List;
 // TODO (5.A) buat class MainActivity agar bisa mengimplementasikan OnItemSelectedListener
 public class MainActivity extends AppCompatActivity {
 
-    // TODO (5) buat variabel komponen UI untuk:
-    // EditText (etJumlah), RadioButton (rbAdditional),
+    // TODO (5.B) buat variabel komponen UI untuk:
+    // EditText (edtJumlah), RadioButton (rbAdditional),
     // RadioGroup (rgAdditional), Spinner (spFilm) dan Button (btnBook);
     private Spinner spClass;
 
@@ -31,21 +31,19 @@ public class MainActivity extends AppCompatActivity {
         // TODO (6) LANJUTKAN INISIALISASI VALUE UNTUK Spinner (spFilm) mengikuti contoh di atas
 
 
-        // TODO (7) LANJUTKAN INISIALISASI VALUE UNTUK RadioButton (rbAdditional)
+        // TODO (7) LANJUTKAN INISIALISASI VALUE UNTUK RadioGRoup (rgAdditional)
 
 
-        // TODO (8) LANJUTKAN INISIALISASI VALUE UNTUK RadioGRoup (rgAdditional)
+        // TODO (8) LANJUTKAN INISIALISASI VALUE UNTUK EditText (edtJumlah)
 
 
-        // TODO (9) LANJUTKAN INISIALISASI VALUE UNTUK EditText (etJumlah)
-
-
-        // TODO (10) LANJUTKAN INISIALISASI VALUE UNTUK Button (btnBook)
+        // TODO (9) LANJUTKAN INISIALISASI VALUE UNTUK Button (btnBook)
 
 
         // Spinner Click Listener
         spClass.setOnItemSelectedListener(this);
-        // TODO (11) TAMBAHKAN spFilm dalam click listener
+        // TODO (10) TAMBAHKAN spFilm dalam click listener
+        spFilm.setOnItemSelectedListener(this);
 
         // List data untuk daftar kelas
         classCinematix = new ArrayList<String>();
@@ -69,12 +67,18 @@ public class MainActivity extends AppCompatActivity {
 
         // Creating adapter for Spinner
         ArrayAdapter<String> classCinematixAdapter = new ArrayAdapter<String>(this, R.layout.support_simple_spinner_dropdown_item, classCinematix);
-        // TODO (12) BUATKAN ADAPTER UNTUK filmCinematixAdapter sesuai dengan format classCinematixAdapter
+        // TODO (11) BUATKAN ADAPTER UNTUK filmCinematixAdapter sesuai dengan format classCinematixAdapter
+
 
 
         // Setup Adapter in dropdown view
         classCinematixAdapter.setDropDownViewResource(R.layout.support_simple_spinner_dropdown_item);
-        // TODO (13) SETUP ADAPTER UNTUK filmCinematixAdapter dalam dropdown view sesuai dengan format classCinematixAdapter
+        // TODO (12) SETUP ADAPTER UNTUK filmCinematixAdapter dalam dropdown view sesuai dengan format classCinematixAdapter
+
+
+        spClass.setAdapter(classCinematixAdapter);
+        // TODO (13) Masukkan filmCinematixAdapter ke dalam spFilm
+
 
         btnBook.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -82,29 +86,31 @@ public class MainActivity extends AppCompatActivity {
 
                 boolean valid = true;
 
-                if (etJumlah.getText().length() < 1) {
-                    // TODO (14.A) setError pada etJumlah dengan pernyataan "Wajib diisi!"
+                if (edtJumlah.getText().length() < 1) {
+                    // TODO (14.A) setError pada edtJumlah dengan pernyataan "Wajib diisi!"
                     valid = false;
-                } else if (Integer.parseInt(etJumlah.getText().toString()) < 1) {
-                    // TODO (14.B) setError pada etJumlah dengan pernyataan "Minimal 1 tiket!"
+                } else if (Integer.parseInt(edtJumlah.getText().toString()) < 1) {
+                    // TODO (14.B) setError pada edtJumlah dengan pernyataan "Minimal 1 tiket!"
                     valid = false;
                 }
 
                 if (valid) {
 
-                    // Buatlah sebuah object Intent dengan sumbernya adalah MainActivity dan tujuannya adalah ResultActivity
+                    // TODO (15.A) Buatlah sebuah object Intent dengan nama intent. Sumbernya adalah MainActivity dan tujuannya adalah ResultActivity
+
 
                     intent.putExtra("classCinematix", spClass.getSelectedItem().toString());
-                    // TODO (15.A) masukkan spFilm ke dalam intent dengan konstanta "filmCinematix"
+                    // TODO (15.B) masukkan spFilm ke dalam intent dengan konstanta "filmCinematix"
                     // dengan mengikuti format di intent.putExtra sebelumnya
+
 
                     int selectedId = rgAdditional.getCheckedRadioButtonId();
                     rbAdditional = (RadioButton) findViewById(selectedId);
                     intent.putExtra("additionalCinematix", rbAdditional.getText().toString());
 
-                    intent.putExtra("jumlahCinematix", etJumlah.getText().toString());
+                    intent.putExtra("jumlahCinematix", edtJumlah.getText().toString());
 
-                    // TODO (15) masukkan method startActivity() dengan parameter intent untuk navigasi ke UI/Activity berikutnya
+                    // TODO (15.C) masukkan method startActivity() dengan parameter intent untuk navigasi ke UI/Activity berikutnya
 
                 }
             }
