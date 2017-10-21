@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -20,7 +19,7 @@
                 android:layout_height="180dp"
                 android:contentDescription="@string/background_only"
                 android:scaleType="centerCrop"
-                android:src="@drawable/theater"/>
+                android:src="@drawable/theater" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -35,41 +34,40 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/class_label"/>
+                    android:text="@string/class_label" />
 
                 <Spinner
                     android:id="@+id/sp_class"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="@dimen/default_margin"
-                    android:layout_marginTop="@dimen/input_margin"/>
+                    android:layout_marginTop="@dimen/input_margin" />
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/film_label"/>
+                    android:text="@string/film_label" />
 
-                <!--TODO (1) BUAT Spinner MOVIE DENGAN ketentuan
+                <!--TODO (1) Buatlah Spinner untuk daftar movie dengan ketentuan
                     android:id="@+id/sp_movie"-->
 
-
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/ticket_label"/>
+                    android:text="@string/ticket_label" />
 
-                <!--TODO (2) BUAT EditText JUMLAH TIKET DENGAN ketentuan
+                <!--TODO (2) Buatlah EditText untuk jumlah tiket dengan ketentuan
                     android:id="@+id/edt_jumlah"
                     android:inputType="numberSigned"-->
 
-
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/additional_label"/>
+                    android:text="@string/additional_label" />
 
-                <!--TODO (3) TAMBAHKAN android:orientation="horizontal"
-                    di RadioGroup-->
+                <!--TODO (4) Tambahkan ketentuan di bawah untuk RadioGroup
+                    android:orientation="horizontal"-->
+
                 <RadioGroup
                     android:id="@+id/rg_additional"
                     android:layout_width="match_parent"
@@ -78,15 +76,15 @@
                     android:layout_marginTop="@dimen/input_margin">
 
                     <RadioButton
-                        android:id="@+id/rb_true"
+                        android:id="@+id/rb_yes"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/ya_label"/>
+                        android:text="@string/ya_label" />
 
-                    <!--TODO (4) BUAT RadioButton DENGAN ketentuan
-                        android:id = "@+id/rb_false"
+                    <!--TODO (3) Buatlah RadioButton untuk pilihan "Tidak" dengan ketentuan
+                        android:id="@+id/rb_no"
                         android:checked="true"
-                        android:string="@string/tidak_label"-->
+                        android:text="@string/tidak_label"-->
 
                 </RadioGroup>
 
@@ -96,13 +94,12 @@
                     android:layout_height="wrap_content"
                     android:background="@color/colorAccent"
                     android:text="@string/booking_label"
-                    android:textColor="@color/white"/>
+                    android:textColor="@color/white" />
 
             </LinearLayout>
 
         </RelativeLayout>
 
     </ScrollView>
-
 
 </RelativeLayout>

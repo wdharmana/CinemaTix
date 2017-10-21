@@ -12,7 +12,7 @@ import java.util.Locale;
 
 public class ResultActivity extends AppCompatActivity {
 
-    private TextView tvClass, tvMovie, tvRate, tvAdditional, tvJumlah;
+    private TextView tvClass, tvMovie, tvRate, tvJumlah, tvAdditional;
     private TextView tvSubTotalTicket, tvSubTotalAddtional, tvTotal;
     private Button btnShare;
 
@@ -21,11 +21,12 @@ public class ResultActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_result);
 
+        // Inisialisasi komponen berdasarkan id dari layout ke dalam variabel
         tvClass = (TextView) findViewById(R.id.tv_class);
         tvMovie = (TextView) findViewById(R.id.tv_movie);
         tvRate = (TextView) findViewById(R.id.tv_rate);
-        tvAdditional = (TextView) findViewById(R.id.tv_additional);
         tvJumlah = (TextView) findViewById(R.id.tv_jumlah);
+        tvAdditional = (TextView) findViewById(R.id.tv_additional);
 
         tvSubTotalTicket = (TextView) findViewById(R.id.tv_ticket_subtotal);
         tvSubTotalAddtional = (TextView) findViewById(R.id.tv_additional_subtotal);
@@ -33,48 +34,44 @@ public class ResultActivity extends AppCompatActivity {
 
         btnShare = (Button) findViewById(R.id.btn_share);
 
-        // Declare Intent here
-        final Intent intent = getIntent();
+        // Deklarasikan intent
+        Intent intent = getIntent();
 
+        // Ambil data yang dikirimkan dari MainActivity
         final String classCinematix = intent.getStringExtra("classCinematix");
         tvClass.setText(classCinematix);
 
-        // TODO (16) Buat variable untuk menampung INTENT dari filmCinematix dengan nama movieCinematix.
-        // Masukkan movieCinematix ke dalam tvMovie sesuai dengan format classCinematix dan tvClass di atas
+        // TODO (14) Buatlah variabel "movieCinematix" untuk menampung data yang dikirimkan dari "MainActivity"
+        // [ikuti contoh di atas (classCinematix)]
 
-
-        // TODO (17) Masukkan method getPriceBasedOnClass() dengan parameter classCinematix ke dalam variabel rate
+        // TODO (15) Gunakan method "getPriceBasedOnClass()" dengan parameter "classCinematix" ke dalam variabel "rate"
         int rate = ;
         tvRate.setText(convertMoney(rate));
-
-
-        final String additional = intent.getStringExtra("additionalCinematix");
-        int priceAdditional = getPriceBasedOnAdditional(additional);
-        // TODO (18) panggil method convertMoney() dengan parameter priceAdditional dan masukkan
-        // setelah tanda " : "
-        tvAdditional.setText(additional+ " : ");
 
         final String jumlah = intent.getStringExtra("jumlahCinematix");
         tvJumlah.setText(jumlah);
 
-        // Sub total
+        final String additional = intent.getStringExtra("additionalCinematix");
+        int priceAdditional = getPriceBasedOnAdditional(additional);
+        // TODO (16) Gunakan method "convertMoney()" dengan parameter "priceAdditional" setelah tanda "+"
+        tvAdditional.setText(additional + " : " + );
+
+        // Hitung subtotal
         int priceClass = getPriceBasedOnClass(classCinematix);
 
-        // TODO (19.A) ubah tipe data variable jumlah menjadi Integer
-        // dengan Integer.valueOf()
+        // TODO (17.A) Ubahlah tipe data variabel "jumlah" dengan menggunakan method "Integer.valueOf()"
         int subTotalMovie = priceClass * jumlah;
         tvSubTotalTicket.setText(convertMoney(subTotalMovie));
 
-        // TODO (19.B) ubah tipe data variable jumlah menjadi Integer
-        // dengan Integer.valueOf()
+        // TODO (17.A) Ubahlah tipe data variabel "jumlah" dengan menggunakan method "Integer.valueOf()"
         int subTotalAddtional = priceAdditional * jumlah;
         tvSubTotalAddtional.setText(convertMoney(subTotalAddtional));
 
-        // Total
+        // Hitung total
         final int total = subTotalMovie + subTotalAddtional;
         tvTotal.setText(convertMoney(total));
 
-        btnShare = (Button) findViewById(R.id.btn_share);
+        // Deteksi kapan tombol "Bagikan Ke Teman" di tekan
         btnShare.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -83,17 +80,13 @@ public class ResultActivity extends AppCompatActivity {
                         ", include popcorn dan soda : " + additional + ".\n" +
                         "Total Harga : " + convertMoney(total);
 
-                // TODO (20.A) Deklarasikan Intent object dengan nama sendIntent
+                // TODO (18.A) Deklarasikan object "Intent" dengan nama "sendIntent"
 
-
-                // TODO (20.B) berikan aksi intent.ACTION_SEND thdp sendIntent
-
-
+                // TODO (18.B) Set tipe "sendIntent" menjadi "text/plain"
+                // TODO (18.C) Set action "sendIntent" menjadi "Intent.ACTION_SEND"
                 sendIntent.putExtra(Intent.EXTRA_TEXT, sendText);
 
-                // TODO (20.C) Set type sendIntent dengan "text/plain"
-
-
+                // Pindah activity ke activity bawaan android untuk share data
                 startActivity(Intent.createChooser(sendIntent, "Bagikan"));
             }
         });
@@ -135,6 +128,4 @@ public class ResultActivity extends AppCompatActivity {
     public String convertMoney(int money) {
         return NumberFormat.getNumberInstance(Locale.GERMANY).format(money);
     }
-
-
 }
