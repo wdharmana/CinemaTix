@@ -12,7 +12,7 @@ import java.util.Locale;
 
 public class ResultActivity extends AppCompatActivity {
 
-    private TextView tvClass, tvMovie, tvRate, tvAdditional, tvJumlah;
+    private TextView tvClass, tvMovie, tvRate, tvJumlah, tvAdditional;
     private TextView tvSubTotalTicket, tvSubTotalAddtional, tvTotal;
     private Button btnShare;
 
@@ -21,11 +21,12 @@ public class ResultActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_result);
 
+        // Inisialisasi komponen berdasarkan id dari layout ke dalam variabel
         tvClass = (TextView) findViewById(R.id.tv_class);
         tvMovie = (TextView) findViewById(R.id.tv_movie);
         tvRate = (TextView) findViewById(R.id.tv_rate);
-        tvAdditional = (TextView) findViewById(R.id.tv_additional);
         tvJumlah = (TextView) findViewById(R.id.tv_jumlah);
+        tvAdditional = (TextView) findViewById(R.id.tv_additional);
 
         tvSubTotalTicket = (TextView) findViewById(R.id.tv_ticket_subtotal);
         tvSubTotalAddtional = (TextView) findViewById(R.id.tv_additional_subtotal);
@@ -33,26 +34,27 @@ public class ResultActivity extends AppCompatActivity {
 
         btnShare = (Button) findViewById(R.id.btn_share);
 
-        // Declare intent here
+        // Deklarasikan intent
         Intent intent = getIntent();
 
+        // Ambil data yang dikirimkan dari MainActivity
         final String classCinematix = intent.getStringExtra("classCinematix");
         tvClass.setText(classCinematix);
 
-        final String movieCinematix = intent.getStringExtra("filmCinematix");
+        final String movieCinematix = intent.getStringExtra("movieCinematix");
         tvMovie.setText(movieCinematix);
 
         int rate = getPriceBasedOnClass(classCinematix);
         tvRate.setText(convertMoney(rate));
 
-        final String additional = intent.getStringExtra("additionalCinematix");
-        int priceAdditional = getPriceBasedOnAdditional(additional);
-        tvAdditional.setText(additional+ " : "+convertMoney(priceAdditional) );
-
         final String jumlah = intent.getStringExtra("jumlahCinematix");
         tvJumlah.setText(jumlah);
 
-        // Sub total
+        final String additional = intent.getStringExtra("additionalCinematix");
+        int priceAdditional = getPriceBasedOnAdditional(additional);
+        tvAdditional.setText(additional + " : " + convertMoney(priceAdditional));
+
+        // Hitung subtotal
         int priceClass = getPriceBasedOnClass(classCinematix);
 
         int subTotalMovie = priceClass * Integer.valueOf(jumlah);
@@ -61,11 +63,11 @@ public class ResultActivity extends AppCompatActivity {
         int subTotalAddtional = priceAdditional * Integer.valueOf(jumlah);
         tvSubTotalAddtional.setText(convertMoney(subTotalAddtional));
 
-        // Total
+        // Hitung total
         final int total = subTotalMovie + subTotalAddtional;
         tvTotal.setText(convertMoney(total));
 
-        btnShare = (Button) findViewById(R.id.btn_share);
+        // Deteksi kapan tombol "Bagikan Ke Teman" di tekan
         btnShare.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -73,10 +75,14 @@ public class ResultActivity extends AppCompatActivity {
                         movieCinematix + ". Kelas " + classCinematix +
                         ", include popcorn dan soda : " + additional + ".\n" +
                         "Total Harga : " + convertMoney(total);
+
                 Intent sendIntent = new Intent();
+
+                sendIntent.setType("text/plain");
                 sendIntent.setAction(Intent.ACTION_SEND);
                 sendIntent.putExtra(Intent.EXTRA_TEXT, sendText);
-                sendIntent.setType("text/plain");
+
+                // Pindah activity ke activity bawaan android untuk share data
                 startActivity(Intent.createChooser(sendIntent, "Bagikan"));
             }
         });
@@ -118,6 +124,4 @@ public class ResultActivity extends AppCompatActivity {
     public String convertMoney(int money) {
         return NumberFormat.getNumberInstance(Locale.GERMANY).format(money);
     }
-
-
 }
