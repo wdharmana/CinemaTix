@@ -41,10 +41,11 @@ public class ResultActivity extends AppCompatActivity {
         final String classCinematix = intent.getStringExtra("classCinematix");
         tvClass.setText(classCinematix);
 
-        final String movieCinematix = intent.getStringExtra("movieCinematix");
-        tvMovie.setText(movieCinematix);
+        // TODO (14) Buatlah variabel "movieCinematix" untuk menampung data yang dikirimkan dari "MainActivity"
+        // [ikuti contoh di atas (classCinematix)]
 
-        int rate = getPriceBasedOnClass(classCinematix);
+        // TODO (15) Gunakan method "getPriceBasedOnClass()" dengan parameter "classCinematix" ke dalam variabel "rate"
+        int rate = ;
         tvRate.setText(convertMoney(rate));
 
         final String jumlah = intent.getStringExtra("jumlahCinematix");
@@ -52,15 +53,18 @@ public class ResultActivity extends AppCompatActivity {
 
         final String additional = intent.getStringExtra("additionalCinematix");
         int priceAdditional = getPriceBasedOnAdditional(additional);
-        tvAdditional.setText(additional + " : " + convertMoney(priceAdditional));
+        // TODO (16) Gunakan method "convertMoney()" dengan parameter "priceAdditional" setelah tanda "+"
+        tvAdditional.setText(additional + " : " + );
 
         // Hitung subtotal
         int priceClass = getPriceBasedOnClass(classCinematix);
 
-        int subTotalMovie = priceClass * Integer.valueOf(jumlah);
+        // TODO (17.A) Ubahlah tipe data variabel "jumlah" dengan menggunakan method "Integer.valueOf()"
+        int subTotalMovie = priceClass * jumlah;
         tvSubTotalTicket.setText(convertMoney(subTotalMovie));
 
-        int subTotalAddtional = priceAdditional * Integer.valueOf(jumlah);
+        // TODO (17.A) Ubahlah tipe data variabel "jumlah" dengan menggunakan method "Integer.valueOf()"
+        int subTotalAddtional = priceAdditional * jumlah;
         tvSubTotalAddtional.setText(convertMoney(subTotalAddtional));
 
         // Hitung total
@@ -76,10 +80,10 @@ public class ResultActivity extends AppCompatActivity {
                         ", include popcorn dan soda : " + additional + ".\n" +
                         "Total Harga : " + convertMoney(total);
 
-                Intent sendIntent = new Intent();
+                // TODO (18.A) Deklarasikan object "Intent" dengan nama "sendIntent"
 
-                sendIntent.setType("text/plain");
-                sendIntent.setAction(Intent.ACTION_SEND);
+                // TODO (18.B) Set tipe "sendIntent" menjadi "text/plain"
+                // TODO (18.C) Set action "sendIntent" menjadi "Intent.ACTION_SEND"
                 sendIntent.putExtra(Intent.EXTRA_TEXT, sendText);
 
                 // Pindah activity ke activity bawaan android untuk share data

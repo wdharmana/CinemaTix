@@ -16,11 +16,11 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
-    private Spinner spClass, spMovie;
-    private EditText etJumlah;
-    private RadioGroup rgAdditional;
-    private RadioButton rbAdditional;
-    private Button btnBook;
+    private Spinner spClass;
+    // TODO (5) Buatlah variabel private untuk komponen UI berikut :
+    // Spinner spClass (spMovie), EditText (etJumlah),
+    // RadioGroup (rgAdditional), RadioButton (rbAdditional), Button (btnBook)
+    // [ikuti contoh di atas (spClass)]
 
     private List<String> classCinematix, movieCinematix;
 
@@ -31,10 +31,14 @@ public class MainActivity extends AppCompatActivity {
 
         // Inisialisasi komponen berdasarkan id dari layout ke dalam variabel
         spClass = (Spinner) findViewById(R.id.sp_class);
-        spMovie = (Spinner) findViewById(R.id.sp_movie);
-        etJumlah = (EditText) findViewById(R.id.edt_jumlah);
-        rgAdditional = (RadioGroup) findViewById(R.id.rg_additional);
-        btnBook = (Button) findViewById(R.id.btn_book);
+        // TODO (6) Lanjutkan inisialisasi value untuk "Spinner (spMovie)"
+        // [ikuti contoh di atas (spClass)]
+
+        // TODO (7) Lanjutkan inisialisasi value untuk "EditText (etJumlah)"
+
+        // TODO (8) Lanjutkan inisialisasi value untuk "RadioGroup (rgAdditional)"
+
+        // TODO (9) Lanjutkan inisialisasi value untuk "Button (btnBook)"
 
         // Berikan spinner beberapa data
         classCinematix = new ArrayList<String>();
@@ -56,11 +60,13 @@ public class MainActivity extends AppCompatActivity {
 
         // Buatlah adapter untuk spinner
         ArrayAdapter<String> classCinematixAdapter = new ArrayAdapter<String>(this, R.layout.support_simple_spinner_dropdown_item, classCinematix);
-        ArrayAdapter<String> movieCinematixAdapter = new ArrayAdapter<String>(this, R.layout.support_simple_spinner_dropdown_item, movieCinematix);
+        // TODO (10) Lanjutkan membuat adapter untuk "movieCinematixAdapter"
+        // [ikuti contoh di atas (classCinematixAdapter)]
 
         // Set adapter tadi ke dalam spinner
         spClass.setAdapter(classCinematixAdapter);
-        spMovie.setAdapter(movieCinematixAdapter);
+        // TODO (11) Lanjutkan men-setup "spMovie"
+        // [ikuti contoh di atas (spClass)]
 
         // Deteksi kapan tombol "Pesan Tiket" di tekan
         btnBook.setOnClickListener(new View.OnClickListener() {
@@ -70,10 +76,10 @@ public class MainActivity extends AppCompatActivity {
                 boolean valid = true;
 
                 if (etJumlah.getText().length() < 1) {
-                    etJumlah.setError("Wajib diisi!");
+                    // TODO (12.A) setError pada "etJumlah" dengan pernyataan "Wajib diisi!"
                     valid = false;
                 } else if (Integer.parseInt(etJumlah.getText().toString()) < 1) {
-                    etJumlah.setError("Minimal 1 tiket");
+                    // TODO (12.B) setError pada "etJumlah" dengan pernyataan "Minimal 1 tiket!"
                     valid = false;
                 }
 
@@ -82,16 +88,19 @@ public class MainActivity extends AppCompatActivity {
                     int selectedId = rgAdditional.getCheckedRadioButtonId();
                     rbAdditional = (RadioButton) findViewById(selectedId);
 
-                    Intent intent = new Intent(MainActivity.this, ResultActivity.class);
+                    // TODO (13.A) Buatlah object "Intent" dengan sumber "MainActivity", dan tujuannya ke "ResultActivity"
 
                     // Set data untuk dikirimkan ke ResultActivity
                     intent.putExtra("classCinematix", spClass.getSelectedItem().toString());
-                    intent.putExtra("movieCinematix", spMovie.getSelectedItem().toString());
+                    // TODO (13.B) Masukkan "spMovie" ke dalam "intent" dengan "putExtra" menggunakan konstanta "movieCinematix"
+                    // [ikuti contoh di atas (spClass)]
+
                     intent.putExtra("additionalCinematix", rbAdditional.getText().toString());
-                    intent.putExtra("jumlahCinematix", etJumlah.getText().toString());
+                    // TODO (13.B) Masukkan "etJumlah" ke dalam "intent" dengan "putExtra" menggunakan konstanta "jumlahCinematix"
+                    // [ikuti contoh di atas (rbAdditional)]
 
                     // Pindah activity ke ResultActivity
-                    startActivity(intent);
+                    // TODO (13.C) Gunakan method "startActivity()" dengan parameter "intent"
                 }
             }
         });
